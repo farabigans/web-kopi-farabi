@@ -1,20 +1,20 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 session_start();
 // menangkap data yang dikirim dari form
-$email = $_POST['email'];
+$username = $_POST['username'];
 $password = $_POST['password'];
  
-// menyeleksi data customer dengan email dan password yang sesuai
-$data = mysqli_query($koneksi,"select * from customer where email='$email' and password='$password'");
+// menyeleksi data admin dengan username dan password yang sesuai
+$data = mysqli_query($koneksi,"select * from admin where username='$username' and password='$password'");
 // menghitung jumlah data yang ditemukan
 $data1 = mysqli_fetch_array($data);
-$id_customer = $data1['id_customer'];
+$id_admin = $data1['id_admin'];
 $cek = mysqli_num_rows($data);
  
 if($cek > 0){
 	
-	$_SESSION['id_customer'] = $id_customer;
+	$_SESSION['id_admin'] = $id_admin;
 
 		
 	echo '<script>alert("Login Sukes!"); document.location="index.php";</script>';
